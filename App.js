@@ -1,12 +1,25 @@
+import { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import TaskList from "./src/components/TaskList.js";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [tasks, setTasks] = useState();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </View>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" 
+        component={TaskList}
+        tasks={tasks}
+        setTasks={setTasks} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
