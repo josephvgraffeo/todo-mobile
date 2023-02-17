@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ScrollView, Text, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
+import AddTask from "./AddTask.js";
 import TaskCard from "./TaskCard.js";
 
 export default function TaskList() {
@@ -37,6 +38,7 @@ export default function TaskList() {
                 resizeMode="cover"
                 style={styles.bg}>
                 <Text style={styles.h1}>To Do List:</Text>
+                <AddTask setTasks={setTasks}/>
                 {
                     !tasks
                         ? <Text>Loading...</Text>
